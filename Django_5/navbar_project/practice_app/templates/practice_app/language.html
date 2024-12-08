@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Templates Language</title>
+</head>
+<body>
+    <div class="nav_container">
+        <h4><a href="/">Home</a></h4>
+        <h4><a href="/navhost/blog/">Blog</a></h4>
+        <h4><a href="/navhost/courses/">Courses</a></h4>
+        <h4><a href="/practice_app/design/">Design</a></h4>
+    </div>
+    <h1>Django Templates Language</h1>
+
+    <!-- For showing value, we use double cruly bracket -->
+    <h3>Name: {{name}}</h3>
+    <h3>Age: {{age}}</h3>
+    <h3>List: {{list}}</h3>
+    <h3>Courses: {{courses}}</h3>
+
+    <!-- For conditional Statement -->
+    {% if age >= 18 %}
+        <h4>Your are selected for driving license</h4>
+    {% elif age < 18 and age >= 10 %}
+        <h4>Your are not selected for driving license</h4>
+    {% else %}
+        <h4>You are a child</h4>
+    {% endif %}
+
+
+    <!-- For Looping -->
+    {% for i in list %}
+        <span>{{i}}</span>
+    {% endfor %}
+
+    {% for i in courses %}
+        <p>course id: {{i.id}}</p>
+        <p>course name:
+            {% filter upper %}
+                {{i.courseName}}
+            {% endfilter %}
+        </p>
+        <p>course fee: {{i.fee}}</p>
+        <br>
+    {% endfor %}
+
+    
+
+    <!-- Templates filter in django -->
+
+    <!-- Capfirst filter  -->
+    {{name | capfirst}}
+
+    <!-- Join filter -->
+    <h3>
+        {{list}}
+    </h3>
+    <br>
+    <h3>
+        {{list | join:" "}}
+    </h3>
+    <br>
+    <h3>
+        {{list | join:" - "}}
+    </h3>
+
+    <!-- Cut filter  -->
+    <h4>{{"My Name Is Erfan" | cut:" "}}</h4>
+    <h4>{{"My Name Is Erfan" | cut:"a"}}</h4>
+
+    <!-- Add Filter  -->
+    <h3>
+        After five years your age is {{age | add:"5"}}
+    </h3> 
+
+    <!-- Default Filter  -->
+    <h2>{{ emptyVariable | default:"nothing here" }}</h2>
+
+    <!-- Dicsort filter  -->
+    <h3>{{courses}}</h3>
+    <h3>{{courses | dictsort:"courseName"}}</h3>
+    <h3>{{courses | dictsort:"fee"}}</h3>
+
+    <!-- first and last and length filter  -->
+     <h4>{{list}}</h4>
+     <h4>{{list | first}}</h4>
+     <h4>{{list | last}}</h4>
+     <h4>{{list | length}}</h4>
+
+     <!-- Slice filter  -->
+     <h4>{{list}}</h4>
+     <h4>{{list | slice:"2"}}</h4>
+     <h4>{{list | slice:"3"}}</h4>
+
+
+     <!-- Togheter more filter use -->
+     <h4>{{list | first | upper}}</h4>
+     <h4>{{list | first | lower}}</h4>
+     <h4>{{list | first | capfirst}}</h4>
+
+
+     <!-- Truncatechars and Truncatewords and Wordcount filter  -->
+      <p>{{"Lorem ipsum, dolor sit amet consectetur" | truncatechars:"16"}}</p>
+      <p>{{"Lorem ipsum, dolor sit amet consectetur" | truncatewords:"3"}}</p>
+      <p>{{"Lorem ipsum, dolor sit amet consectetur" | wordcount}}</p>
+
+
+</body>
+</html>

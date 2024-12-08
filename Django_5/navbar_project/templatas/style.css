@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.nav_container {
+    display: flex;
+    margin: auto;
+    width: 30%;
+    margin-top: 20px;
+}
+h4 {
+    margin: 0;
+} 
+.nav_container h4 a {
+    text-decoration: none;
+    font-family: cursive;
+    background-color: #555;
+    color: floralwhite;
+    padding: 4px 16px;
+    border-right: 2px solid;
+}
