@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    {% block navLink %}
+      {{ block.super }}
+    {% endblock %}
+
+    {% block content %}
+    <h1>This is Home Page. Please Go our meals page</h1>
+    {% endblock %}
+</body>
+</html>
