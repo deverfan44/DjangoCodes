@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title_1{
+    background-color: aqua;
+    padding: 20px;
+    text-align: center;
+}
+.link_1{
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: brown;
+    color: wheat;
+    font-family: sans-serif;
+}
+

@@ -1,0 +1,8 @@
+.table_container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+.table_container table tr {
+    border: 1px solid black !important;
+}
