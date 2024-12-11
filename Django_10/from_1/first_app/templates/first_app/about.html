@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block navBar%}
+    {{ block.super }}
+{% endblock %}
+
+{% block content%}
+    <h3>About Page</h3>
+    <h2>Name: {{name}}</h2>
+    <h2>Email: {{email}}</h2>
+    <h2>District: {{district}}</h2>
+{% endblock %}
