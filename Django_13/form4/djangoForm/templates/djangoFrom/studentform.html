@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{ block.super }}
+    {% load crispy_forms_tags %}
+    <form method="post" enctype="multipart/form-data" style="width: 500px; border: 1px solid rgb(26, 121, 55); margin: 20px auto; padding: 20px;">
+        {% csrf_token%}
+        {{stdform | crispy }}
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+    </form>
+{% endblock%}
