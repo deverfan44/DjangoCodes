@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3 class="text-center py-3">This is home page</h3>
+<div class="table_container" style="width: 80%; margin: 20px auto;">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+        <tr>
+            <th scope="col">{{item.id}}</th>
+            <td><a href="{% url 'edit_musician' item.author.id%}" class="text-decoration-none text-dark">{{item.author.first_name}}</a></td>
+            <td>{{item.author.email}}</td>
+            <td>{{item.rating}}</td>
+            <td>{{item.author.instrument}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.release_date}}</td>
+            <td>
+                <a href="{% url 'edit_album' item.id %}" class="text-decoration-none">Edit</a>
+                <a href="{% url 'delete_album' item.id %}" class="text-decoration-none">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
