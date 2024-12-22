@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>This is home page</h3>
+<div class="task_container container d-flex justify-content-start flex-wrap">
+    {% for item in data %}
+        <div class="card mx-1 my-1" style="width: 30%;">
+            <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            <div class="catagory_show">
+                <p class="m-0">Category:</p>
+                <div class="cat_item my-2">
+                    {% for cat in item.relation.all %}
+                    <span class="d-inline-block bg-info p-1 rounded" style="font-size: 12px;">{{cat}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if item.is_completed == True %}
+            <p>Completed</p>
+            {% else %}
+            <a href="{% url 'edit_task' item.id%}" class="card-link btn btn-success">Edit</a>
+            <a href="{% url 'delete_task' item.id%}" class="card-link btn btn-danger">Delete</a>
+            {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
