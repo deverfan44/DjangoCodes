@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="bg-danger-subtle text-center p-3">This is PassWord Change Page</h1>
+{% if messages %}
+{% for m in messages %}
+    {{m}}
+{% endfor %}
+{% endif %}
+<div class="div_form w-50 m-auto">
+    <form action="#" method="post" novalidate>
+        {% csrf_token %}
+
+        <!-- {% if form.non_field_errors %}
+        {% for er in form.non_field_errors %}
+            <p class="bg-danger text-light py-1 px-2">{{er}}</p>
+            <p>If you have not an account. Please <a href="{% url 'signup'%}">signUp</a></p>
+        {% endfor %}
+        {% endif %} -->
+
+        <!-- {{form | crispy}} -->
+        {% for fm in form%}
+            <div>
+                {{fm.label_tag}}
+                {{fm}}
+                {{fm.errors | striptags}}
+            </div>
+        {% endfor%}
+        <button type="submit" class="btn btn-primary mt-2">Change</button>
+    </form>
+</div>
+{% endblock %}
