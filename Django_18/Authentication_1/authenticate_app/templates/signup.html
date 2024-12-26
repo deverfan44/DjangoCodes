@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+<style>
+    /* .erfanstyle {
+        color: black;
+        background-color: rgb(133, 3, 133);
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+        margin-left: 10px;
+    } */
+    .success{
+        color: black;
+        background-color: rgb(14, 224, 49);
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+        margin-left: 10px;
+    }
+    .warning{
+        color: black;
+        background-color: rgb(206, 221, 2);
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center bg-danger-subtle p-3">This is signUP page</h1>
+
+{% if messages %}
+{% for m in messages %}
+<small {% if m.tags %} class="{{m.tags}} erfanstyle" {% endif %}>{{m}}</small>
+{% endfor %}
+{% endif %}
+
+<div class="div_form w-75 m-auto p-5">
+    <form action="#" method="post" novalidate>
+        {% csrf_token %}
+        <!-- {{form | crispy}} -->
+         {% for fm in form %}
+         <div>
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors | striptags}}
+         </div>
+         {% endfor %}
+        <button type="submit" class="btn btn-primary mt-2">Sign UP</button><br>
+        <small>Already have an account <a href="{% url 'login'%}">Login</a></small>
+    </form>
+</div>
+{% endblock %}
